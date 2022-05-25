@@ -1,11 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const app = express();
 const cors = require("cors");
 
-const app = express();
+const swaggerJSON = require("./swagger.json");
+const swaggerUI = require("swagger-ui-express");
+
+app.use("/", swaggerUI.serve, swaggerUI.setup(swaggerJSON));
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8081",
 };
 
 app.use(cors(corsOptions));
@@ -14,10 +18,10 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const db = require("./app/models");
+const db = require("./Server/models");
 db.client.sync();
 
-require("./app/routes/player.routes")(app);
+require("./Server/routes/player.routes")(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
