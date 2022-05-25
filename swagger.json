@@ -6,15 +6,11 @@
     "title": "Binar Academy's Challenge-Chapter 8",
     "termsOfService": "http://swagger.io/terms/",
     "contact": {
-      "email": "johanes.b.gading@gmail.com"
-    },
-    "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      "email": "wigarwijaya@gmail.com"
     }
   },
   "host": "localhost:5000",
-  "basePath": "/api/",
+  "basePath": "/api",
   "tags": [
     {
       "name": "players",
@@ -26,67 +22,6 @@
   ],
   "paths": {
     "/players": {
-      "get": {
-        "tags": [
-          "players"
-        ],
-        "summary": "Get all players' data",
-        "description": "Finding and listing all players' data.",
-        "operationId": "players.findAll",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "query",
-            "name": "username",
-            "type": "string",
-            "description": "The user's username you want to get the data. Must be exact.",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "email",
-            "type": "string",
-            "description": "The user's email you want to get the data. Must be exact.",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "experience",
-            "type": "string",
-            "description": "The user's experience you want to get the data. Must be exact.",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "level",
-            "type": "string",
-            "description": "The user's level you want to get the data. Must be exact.",
-            "required": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "SUCCESS",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "result": {
-                  "type": "string",
-                  "example": "Success"
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Player"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "players"
@@ -132,6 +67,67 @@
           },
           "500": {
             "description": "Some error occurred while creating the Player."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Get all players' data",
+        "description": "Finding and listing all players' data.",
+        "operationId": "players.findAll",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "username",
+            "type": "string",
+            "description": "The user's username you want to get the data.",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "email",
+            "type": "string",
+            "description": "The user's email you want to get the data.",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "experience",
+            "type": "string",
+            "description": "The user's experience you want to get the data.",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "level",
+            "type": "string",
+            "description": "The user's level you want to get the data.",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SUCCESS",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "Success"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Player"
+                  }
+                }
+              }
+            }
           }
         }
       }
